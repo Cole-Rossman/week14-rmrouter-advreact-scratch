@@ -12,7 +12,7 @@ export default function Main() {
 
   const history = useHistory();
   const location = useLocation();
-  const characterStatus = new URLSearchParams(location.search).get('status') ?? 'all';
+  const status = new URLSearchParams(location.search).get('status') ?? 'all';
 
   const handleStatusChange = (event) => {
       history.push(`/?status=${event.target.value}`);
@@ -22,16 +22,21 @@ export default function Main() {
   try {
     const fetchData = async () => {
       setLoading(true);
-      const characterData = await fetchCharacters();
-      console.log(characterData);
-      setCharacters(characterData.results);
+      const statusParam = new URLSearchParams(location.search).get('status');
+      const url = 
+      statusParam === 'all' && !statusParam
+      ? 'https://rickandmortyapi.com/api/character'
+      : `https://rickandmortyapi.com/api/character?status=${statusParam}`;
+      const res = await fetch(url);
+      const { results } = await res.json();
+      setCharacters(results);
       setLoading(false);
     }
     fetchData();
   } catch (e) {
     setError(e.message)
   }
-  }, []);
+  }, [location.search]);
 
   return (
     loading ? <h1>Loading...</h1> :
