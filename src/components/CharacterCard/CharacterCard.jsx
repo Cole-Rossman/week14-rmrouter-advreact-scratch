@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function CharacterCard({ id, image, name, species, status, hide }) {
   return (
     <article key={id} className={cardstyle.card}>
-      <img alt='characterimg' src={image} />
+      <img alt={`Image of ${name}`} src={image} />
       {/* if hide is falsy then link is truthy */}
       {!hide && 
       <Link to={`/character/${id}`}>
