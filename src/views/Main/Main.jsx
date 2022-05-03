@@ -22,6 +22,7 @@ export default function Main() {
     const fetchData = async () => {
       setLoading(true);
       const statusParam = new URLSearchParams(location.search).get('status');
+      // if statusParam (dropdown option) is equal to 'all' or(||) if status param is a falsy value('' empty string meaning no status selected) then(?) the first url is run else(:) if status selected(string is filled with status), the second url is run. 
       const url = 
       statusParam === 'all' || !statusParam
       ? 'https://rickandmortyapi.com/api/character'

@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
     <Header />
     <Switch>
       <Route path="/character/:id">
@@ -17,7 +17,7 @@ export default function App() {
         <Main />
       </Route>
     </Switch>
-    </BrowserRouter>
+    </>
     
   )
 }
