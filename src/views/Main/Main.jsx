@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import mainstyle from './Main.css'
-import { fetchCharacters } from '../../services/characters';
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
 import CharacterFilter from '../../components/CharacterFilter/CharacterFilter';
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 export default function Main() {
   const [characters, setCharacters] = useState([]);
@@ -24,7 +23,7 @@ export default function Main() {
       setLoading(true);
       const statusParam = new URLSearchParams(location.search).get('status');
       const url = 
-      statusParam === 'all' && !statusParam
+      statusParam === 'all' || !statusParam
       ? 'https://rickandmortyapi.com/api/character'
       : `https://rickandmortyapi.com/api/character?status=${statusParam}`;
       const res = await fetch(url);
@@ -43,7 +42,7 @@ export default function Main() {
     <div className={mainstyle.main}>
       {error && <p>{error}</p>}
       <h1>Character List</h1>
-      <CharacterFilter />
+      <CharacterFilter statusValue={status} onStatusChange={handleStatusChange}/>
       <ul className={mainstyle.characterlist}>
         {characters.map((character) => (
             <CharacterCard key={character.id} {...character} />
