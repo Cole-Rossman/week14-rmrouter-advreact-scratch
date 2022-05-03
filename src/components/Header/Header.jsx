@@ -1,7 +1,6 @@
-import React from 'react'
-
+import headerstyle from './Header.css'
 export default function Header() {
   return (
-    <div>Header</div>
+    <header>Rick and Morty Compendium</header>
   )
 }

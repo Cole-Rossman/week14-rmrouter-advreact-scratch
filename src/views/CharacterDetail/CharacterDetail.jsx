@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 
+
 export default function CharacterDetail() {
   const [character, setCharacter] = useState({});
   const [loading, setLoading] = useState(true);

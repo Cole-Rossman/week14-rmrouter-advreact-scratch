@@ -1,7 +1,8 @@
+import filterstyle from './CharacterFilter.css'
 
 export default function CharacterFilter({ statusValue, onStatusChange }) {
   return (
-  <div>
+  <div className={filterstyle.filter}>
     <label htmlFor="status">Character status:</label>
     <select id="status" value={statusValue} onChange={onStatusChange}>
        <option value="all">All</option> 

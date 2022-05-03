@@ -4,6 +4,7 @@ import CharacterCard from '../../components/CharacterCard/CharacterCard'
 import CharacterFilter from '../../components/CharacterFilter/CharacterFilter';
 import { useHistory, useLocation } from 'react-router-dom'
 
+
 export default function Main() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
